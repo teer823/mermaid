@@ -1,0 +1,2 @@
+# mermaid
+Test Mermaid JS
