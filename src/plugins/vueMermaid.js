@@ -9,10 +9,15 @@ export default {
       }
     })
     Vue.prototype.$createChart = (markdown) => {
-      return new Promise((resolve) => {
-        mermaid.mermaidAPI.render('graphNode', markdown, (svgCode) => {
-          resolve(svgCode)
-        })
+      return new Promise((resolve, reject) => {
+        if(mermaid.parse(markdown)) {
+          mermaid.mermaidAPI.render('graphNode', markdown, (svgCode) => {
+            resolve(svgCode)
+          })
+        } else {
+          reject()
+        }
+        
       })
     }
   },
